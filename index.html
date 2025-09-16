@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             background: white;
             border-radius: 20px;
@@ -54,7 +54,8 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
-            flex-wrap: wrap;
+            overflow-x: auto;
+            padding-bottom: 10px;
         }
 
         .step {
@@ -62,7 +63,7 @@
             flex-direction: column;
             align-items: center;
             flex: 1;
-            min-width: 60px;
+            min-width: 50px;
             position: relative;
         }
 
@@ -93,6 +94,7 @@
             color: #a0aec0;
             z-index: 1;
             position: relative;
+            font-size: 0.9em;
         }
 
         .step.active .step-circle {
@@ -107,14 +109,36 @@
 
         .step-label {
             margin-top: 8px;
-            font-size: 0.85em;
+            font-size: 0.7em;
             color: #718096;
             text-align: center;
+            white-space: nowrap;
         }
 
         .step.active .step-label {
             color: #667eea;
             font-weight: 600;
+        }
+
+        .progress-bar {
+            background: #e2e8f0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .step-indicator {
+            text-align: center;
+            color: #4a5568;
+            font-size: 0.9em;
         }
 
         .form-content {
@@ -134,6 +158,42 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        .domain-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #e2e8f0;
+        }
+
+        .domain-icon {
+            font-size: 2.5em;
+            margin-right: 15px;
+        }
+
+        .domain-title {
+            font-size: 2em;
+            color: #2d3748;
+        }
+
+        .body-section .domain-header { border-bottom-color: #FF6B35; }
+        .being-section .domain-header { border-bottom-color: #667eea; }
+        .balance-section .domain-header { border-bottom-color: #48bb78; }
+        .business-section .domain-header { border-bottom-color: #f6ad55; }
+
+        .subsection {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .subsection h3 {
+            color: #4a5568;
+            margin-bottom: 20px;
+            font-size: 1.4em;
         }
 
         .input-group {
@@ -167,47 +227,8 @@
         }
 
         .input-group textarea {
-            min-height: 100px;
+            min-height: 120px;
             resize: vertical;
-        }
-
-        .domain-section {
-            background: #ffffff;
-            border: 2px solid #e2e8f0;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .domain-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid #e2e8f0;
-        }
-
-        .domain-icon {
-            font-size: 2em;
-            margin-right: 15px;
-        }
-
-        .domain-title {
-            font-size: 1.8em;
-            color: #2d3748;
-        }
-
-        .subsection {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-        }
-
-        .subsection h3 {
-            color: #4a5568;
-            margin-bottom: 15px;
-            font-size: 1.3em;
         }
 
         .goals-grid {
@@ -217,40 +238,49 @@
             margin-bottom: 20px;
         }
 
-        .on-track-section {
-            background: #fff5f5;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
         .radio-group {
             display: flex;
-            gap: 20px;
-            margin: 15px 0;
+            gap: 30px;
+            margin: 20px 0;
         }
 
         .radio-group label {
             display: flex;
             align-items: center;
             cursor: pointer;
+            font-size: 1.1em;
         }
 
         .radio-group input[type="radio"] {
-            margin-right: 8px;
+            margin-right: 10px;
             width: 20px;
             height: 20px;
         }
 
-        .fruit-section {
-            margin-top: 30px;
+        .info-box {
+            background: #edf2f7;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .info-box strong {
+            color: #2d3748;
+        }
+
+        .on-track-section {
+            background: #fff5f5;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
         .fruit-type {
             background: white;
             border: 2px solid #e2e8f0;
             border-radius: 10px;
-            padding: 20px;
+            padding: 25px;
             margin-bottom: 20px;
         }
 
@@ -258,53 +288,48 @@
             display: flex;
             align-items: center;
             margin-bottom: 15px;
-            font-size: 1.2em;
+            font-size: 1.3em;
         }
 
         .growth-badge {
             background: #667eea;
             color: white;
-            padding: 4px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.9em;
-            margin-left: 10px;
+            margin-left: 12px;
+            font-weight: bold;
         }
 
         .reasonable .growth-badge { background: #48bb78; }
         .radical .growth-badge { background: #ed8936; }
         .impossible .growth-badge { background: #e53e3e; }
 
+        .description-text {
+            color: #718096;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
         .missions-section {
             background: #e6fffa;
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
-            margin-top: 25px;
+            margin-bottom: 25px;
         }
 
         .metric-section {
             background: #f0fff4;
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
-            margin-top: 25px;
         }
 
         .metric-inputs {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .info-box {
-            background: #edf2f7;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
-
-        .info-box strong {
-            color: #2d3748;
+            gap: 20px;
+            margin-top: 20px;
         }
 
         .navigation {
@@ -316,7 +341,7 @@
         }
 
         .nav-btn {
-            padding: 12px 30px;
+            padding: 14px 35px;
             border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
@@ -334,13 +359,13 @@
             background: #f8fafc;
         }
 
-        .btn-next, .btn-submit {
+        .btn-next {
             background: #667eea;
             color: white;
             border: none;
         }
 
-        .btn-next:hover, .btn-submit:hover {
+        .btn-next:hover {
             background: #5a67d8;
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
@@ -348,6 +373,8 @@
 
         .btn-submit {
             background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            border: none;
         }
 
         .btn-submit:hover {
@@ -363,7 +390,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin: 20px 0;
+            margin: 30px 0;
         }
 
         .summary-card {
@@ -375,13 +402,25 @@
 
         .summary-card h4 {
             color: #4a5568;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 1.1em;
         }
 
-        .summary-card p {
+        .summary-card .domain-icon {
+            font-size: 1.3em;
+            margin-right: 8px;
+        }
+
+        .summary-item {
+            margin: 8px 0;
             color: #2d3748;
             font-size: 0.95em;
-            line-height: 1.5;
+        }
+
+        .summary-item strong {
+            color: #4a5568;
         }
 
         @media (max-width: 768px) {
@@ -393,12 +432,12 @@
                 grid-template-columns: 1fr;
             }
 
-            .progress-steps {
-                overflow-x: auto;
+            .header h1 {
+                font-size: 1.8em;
             }
 
-            .step-label {
-                font-size: 0.75em;
+            .domain-title {
+                font-size: 1.5em;
             }
         }
     </style>
@@ -418,25 +457,61 @@
                 </div>
                 <div class="step" data-step="2">
                     <div class="step-circle">2</div>
-                    <div class="step-label">Body</div>
+                    <div class="step-label">Body R</div>
                 </div>
                 <div class="step" data-step="3">
                     <div class="step-circle">3</div>
-                    <div class="step-label">Being</div>
+                    <div class="step-label">Being R</div>
                 </div>
                 <div class="step" data-step="4">
                     <div class="step-circle">4</div>
-                    <div class="step-label">Balance</div>
+                    <div class="step-label">Balance R</div>
                 </div>
                 <div class="step" data-step="5">
                     <div class="step-circle">5</div>
-                    <div class="step-label">Business</div>
+                    <div class="step-label">Business R</div>
                 </div>
                 <div class="step" data-step="6">
                     <div class="step-circle">6</div>
+                    <div class="step-label">Body V</div>
+                </div>
+                <div class="step" data-step="7">
+                    <div class="step-circle">7</div>
+                    <div class="step-label">Being V</div>
+                </div>
+                <div class="step" data-step="8">
+                    <div class="step-circle">8</div>
+                    <div class="step-label">Balance V</div>
+                </div>
+                <div class="step" data-step="9">
+                    <div class="step-circle">9</div>
+                    <div class="step-label">Business V</div>
+                </div>
+                <div class="step" data-step="10">
+                    <div class="step-circle">10</div>
+                    <div class="step-label">Body M</div>
+                </div>
+                <div class="step" data-step="11">
+                    <div class="step-circle">11</div>
+                    <div class="step-label">Being M</div>
+                </div>
+                <div class="step" data-step="12">
+                    <div class="step-circle">12</div>
+                    <div class="step-label">Balance M</div>
+                </div>
+                <div class="step" data-step="13">
+                    <div class="step-circle">13</div>
+                    <div class="step-label">Business M</div>
+                </div>
+                <div class="step" data-step="14">
+                    <div class="step-circle">14</div>
                     <div class="step-label">Review</div>
                 </div>
             </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+            <div class="step-indicator" id="stepIndicator">Step 1 of 14</div>
         </div>
 
         <form id="impossibleGameForm">
@@ -473,64 +548,61 @@
 
                     <div class="info-box">
                         <strong>Welcome to Your Quarterly Impossible Game!</strong>
-                        <p style="margin-top: 10px;">This assessment will guide you through setting breakthrough goals across all four life domains. Each domain section will help you:</p>
+                        <p style="margin-top: 10px;">This assessment follows a strategic flow:</p>
                         <ul style="margin-top: 10px; margin-left: 20px;">
-                            <li>Review your current impossible goals</li>
-                            <li>Assess your progress</li>
-                            <li>Set 12-month vision with 3 growth tiers</li>
-                            <li>Define quarterly missions and metrics</li>
+                            <li><strong>Review:</strong> Assess progress on last quarter's missions (Steps 2-5)</li>
+                            <li><strong>Vision:</strong> Set 12-month breakthrough goals (Steps 6-9)</li>
+                            <li><strong>Plan:</strong> Define new quarterly missions (Steps 10-13)</li>
+                            <li><strong>Commit:</strong> Review and submit (Step 14)</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Section 2: BODY Domain -->
-                <div class="section" data-section="2">
+                <!-- Section 2: BODY Current Quarter Review -->
+                <div class="section body-section" data-section="2">
                     <div class="domain-header">
                         <span class="domain-icon">💪</span>
-                        <h2 class="domain-title">BODY Domain</h2>
+                        <h2 class="domain-title">BODY - Current Quarter Review</h2>
                     </div>
 
-                    <!-- Current Impossible Goals -->
                     <div class="subsection">
-                        <h3>Current Impossible Goals</h3>
+                        <h3>Current Quarterly Missions</h3>
                         <div class="info-box">
-                            <strong>Impossible:</strong> Goals that seem utterly not possible, incapable of happening (10x growth)
+                            <strong>Note:</strong> These are your missions from last quarter. If you're just starting, enter your current focus areas.
                         </div>
                         <div class="goals-grid">
                             <div class="input-group">
-                                <label for="body_goal_1">Impossible Goal #1</label>
-                                <input type="text" id="body_goal_1" name="body_goal_1" placeholder="e.g., Complete an Ironman triathlon">
+                                <label for="body_current_mission_1">Current Mission #1</label>
+                                <input type="text" id="body_current_mission_1" name="body_current_mission_1" placeholder="Enter previous quarter's mission">
                             </div>
                             <div class="input-group">
-                                <label for="body_goal_2">Impossible Goal #2</label>
-                                <input type="text" id="body_goal_2" name="body_goal_2" placeholder="e.g., Achieve 8% body fat">
+                                <label for="body_current_mission_2">Current Mission #2</label>
+                                <input type="text" id="body_current_mission_2" name="body_current_mission_2" placeholder="Enter previous quarter's mission">
                             </div>
                             <div class="input-group">
-                                <label for="body_goal_3">Impossible Goal #3</label>
-                                <input type="text" id="body_goal_3" name="body_goal_3" placeholder="e.g., Bench press 2x body weight">
+                                <label for="body_current_mission_3">Current Mission #3</label>
+                                <input type="text" id="body_current_mission_3" name="body_current_mission_3" placeholder="Enter previous quarter's mission">
                             </div>
                             <div class="input-group">
-                                <label for="body_goal_4">Impossible Goal #4</label>
-                                <input type="text" id="body_goal_4" name="body_goal_4" placeholder="e.g., Run a 5-minute mile">
+                                <label for="body_current_mission_4">Current Mission #4</label>
+                                <input type="text" id="body_current_mission_4" name="body_current_mission_4" placeholder="Enter previous quarter's mission">
                             </div>
                         </div>
                     </div>
 
-                    <!-- Progress Check -->
                     <div class="on-track-section">
                         <h3>Progress Assessment</h3>
-                        <label>Are you currently on track to win this Impossible Game?</label>
+                        <label style="font-size: 1.1em; margin-bottom: 15px; display: block;">Are you currently on track to win this Impossible Game?</label>
                         <div class="radio-group">
                             <label><input type="radio" name="body_on_track" value="YES"> Yes</label>
                             <label><input type="radio" name="body_on_track" value="NO"> No</label>
                         </div>
-                        <div class="input-group">
+                        <div class="input-group" style="margin-top: 20px;">
                             <label for="body_correction_plan">If NO, what's your correction plan?</label>
                             <textarea id="body_correction_plan" name="body_correction_plan" placeholder="What can you do this week to get back on track?"></textarea>
                         </div>
                     </div>
 
-                    <!-- Story & Feelings -->
                     <div class="subsection">
                         <h3>Reflection</h3>
                         <div class="input-group">
@@ -542,51 +614,396 @@
                             <input type="text" id="body_feelings" name="body_feelings" placeholder="e.g., Frustrated, energized, disappointed">
                         </div>
                     </div>
+                </div>
 
-                    <!-- 12-Month Vision -->
-                    <div class="fruit-section">
-                        <h3>12-Month Vision: What fruit would make you pleased with progress?</h3>
-                        
-                        <!-- Reasonable Fruit -->
-                        <div class="fruit-type reasonable">
-                            <h4>Reasonable Fruit <span class="growth-badge">1-2x Growth</span></h4>
-                            <p style="margin-bottom: 15px; color: #718096;">Good results within logical limits, moderate expectations</p>
-                            <div class="goals-grid">
-                                <input type="text" name="body_reasonable_1" placeholder="Reasonable outcome #1">
-                                <input type="text" name="body_reasonable_2" placeholder="Reasonable outcome #2">
-                                <input type="text" name="body_reasonable_3" placeholder="Reasonable outcome #3">
-                                <input type="text" name="body_reasonable_4" placeholder="Reasonable outcome #4">
-                            </div>
+                <!-- Section 3: BEING Current Quarter Review -->
+                <div class="section being-section" data-section="3">
+                    <div class="domain-header">
+                        <span class="domain-icon">🧠</span>
+                        <h2 class="domain-title">BEING - Current Quarter Review</h2>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Current Quarterly Missions</h3>
+                        <div class="info-box">
+                            <strong>Note:</strong> These are your missions from last quarter. If you're just starting, enter your current focus areas.
                         </div>
-
-                        <!-- Radical Fruit -->
-                        <div class="fruit-type radical">
-                            <h4>Radical Fruit <span class="growth-badge">4-5x Growth</span></h4>
-                            <p style="margin-bottom: 15px; color: #718096;">Extreme results that excessively surpass reasonable expectations</p>
-                            <div class="goals-grid">
-                                <input type="text" name="body_radical_1" placeholder="Radical outcome #1">
-                                <input type="text" name="body_radical_2" placeholder="Radical outcome #2">
-                                <input type="text" name="body_radical_3" placeholder="Radical outcome #3">
-                                <input type="text" name="body_radical_4" placeholder="Radical outcome #4">
+                        <div class="goals-grid">
+                            <div class="input-group">
+                                <label for="being_current_mission_1">Current Mission #1</label>
+                                <input type="text" id="being_current_mission_1" name="being_current_mission_1" placeholder="Enter previous quarter's mission">
                             </div>
-                        </div>
-
-                        <!-- Impossible Fruit -->
-                        <div class="fruit-type impossible">
-                            <h4>Impossible Fruit <span class="growth-badge">10x Growth</span></h4>
-                            <p style="margin-bottom: 15px; color: #718096;">Utterly not possible, mind-blowing transformation</p>
-                            <div class="goals-grid">
-                                <input type="text" name="body_impossible_1" placeholder="Impossible outcome #1">
-                                <input type="text" name="body_impossible_2" placeholder="Impossible outcome #2">
-                                <input type="text" name="body_impossible_3" placeholder="Impossible outcome #3">
-                                <input type="text" name="body_impossible_4" placeholder="Impossible outcome #4">
+                            <div class="input-group">
+                                <label for="being_current_mission_2">Current Mission #2</label>
+                                <input type="text" id="being_current_mission_2" name="being_current_mission_2" placeholder="Enter previous quarter's mission">
+                            </div>
+                            <div class="input-group">
+                                <label for="being_current_mission_3">Current Mission #3</label>
+                                <input type="text" id="being_current_mission_3" name="being_current_mission_3" placeholder="Enter previous quarter's mission">
+                            </div>
+                            <div class="input-group">
+                                <label for="being_current_mission_4">Current Mission #4</label>
+                                <input type="text" id="being_current_mission_4" name="being_current_mission_4" placeholder="Enter previous quarter's mission">
                             </div>
                         </div>
                     </div>
 
-                    <!-- Quarterly Missions -->
+                    <div class="on-track-section">
+                        <h3>Progress Assessment</h3>
+                        <label style="font-size: 1.1em; margin-bottom: 15px; display: block;">Are you currently on track to win this Impossible Game?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="being_on_track" value="YES"> Yes</label>
+                            <label><input type="radio" name="being_on_track" value="NO"> No</label>
+                        </div>
+                        <div class="input-group" style="margin-top: 20px;">
+                            <label for="being_correction_plan">If NO, what's your correction plan?</label>
+                            <textarea id="being_correction_plan" name="being_correction_plan" placeholder="What can you do this week to get back on track?"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Reflection</h3>
+                        <div class="input-group">
+                            <label for="being_story">What story are you telling yourself about your Being progress?</label>
+                            <textarea id="being_story" name="being_story" placeholder="Describe your internal narrative..."></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="being_feelings">What feelings arise when you tell yourself this story?</label>
+                            <input type="text" id="being_feelings" name="being_feelings" placeholder="e.g., Peaceful, anxious, grounded">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: BALANCE Current Quarter Review -->
+                <div class="section balance-section" data-section="4">
+                    <div class="domain-header">
+                        <span class="domain-icon">⚖️</span>
+                        <h2 class="domain-title">BALANCE - Current Quarter Review</h2>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Current Quarterly Missions</h3>
+                        <div class="info-box">
+                            <strong>Note:</strong> These are your missions from last quarter. If you're just starting, enter your current focus areas.
+                        </div>
+                        <div class="goals-grid">
+                            <div class="input-group">
+                                <label for="balance_current_mission_1">Current Mission #1</label>
+                                <input type="text" id="balance_current_mission_1" name="balance_current_mission_1" placeholder="Enter previous quarter's mission">
+                            </div>
+                            <div class="input-group">
+                                <label for="balance_current_mission_2">Current Mission #2</label>
+                                <input type="text" id="balance_current_mission_2" name="balance_current_mission_2" placeholder="Enter previous quarter's mission">
+                            </div>
+                            <div class="input-group">
+                                <label for="balance_current_mission_3">Current Mission #3</label>
+                                <input type="text" id="balance_current_mission_3" name="balance_current_mission_3" placeholder="Enter previous quarter's mission">
+                            </div>
+                            <div class="input-group">
+                                <label for="balance_current_mission_4">Current Mission #4</label>
+                                <input type="text" id="balance_current_mission_4" name="balance_current_mission_4" placeholder="Enter previous quarter's mission">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="on-track-section">
+                        <h3>Progress Assessment</h3>
+                        <label style="font-size: 1.1em; margin-bottom: 15px; display: block;">Are you currently on track to win this Impossible Game?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="balance_on_track" value="YES"> Yes</label>
+                            <label><input type="radio" name="balance_on_track" value="NO"> No</label>
+                        </div>
+                        <div class="input-group" style="margin-top: 20px;">
+                            <label for="balance_correction_plan">If NO, what's your correction plan?</label>
+                            <textarea id="balance_correction_plan" name="balance_correction_plan" placeholder="What can you do this week to get back on track?"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Reflection</h3>
+                        <div class="input-group">
+                            <label for="balance_story">What story are you telling yourself about your Balance progress?</label>
+                            <textarea id="balance_story" name="balance_story" placeholder="Describe your internal narrative..."></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="balance_feelings">What feelings arise when you tell yourself this story?</label>
+                            <input type="text" id="balance_feelings" name="balance_feelings" placeholder="e.g., Connected, isolated, harmonious">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: BUSINESS Current Quarter Review -->
+                <div class="section business-section" data-section="5">
+                    <div class="domain-header">
+                        <span class="domain-icon">💼</span>
+                        <h2 class="domain-title">BUSINESS - Current Quarter Review</h2>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Current Quarterly Missions</h3>
+                        <div class="info-box">
+                            <strong>Note:</strong> These are your missions from last quarter. If you're just starting, enter your current focus areas.
+                        </div>
+                        <div class="goals-grid">
+                            <div class="input-group">
+                                <label for="business_current_mission_1">Current Mission #1</label>
+                                <input type="text" id="business_current_mission_1" name="business_current_mission_1" placeholder="Enter previous quarter's mission">
+                            </div>
+                            <div class="input-group">
+                                <label for="business_current_mission_2">Current Mission #2</label>
+                                <input type="text" id="business_current_mission_2" name="business_current_mission_2" placeholder="Enter previous quarter's mission">
+                            </div>
+                            <div class="input-group">
+                                <label for="business_current_mission_3">Current Mission #3</label>
+                                <input type="text" id="business_current_mission_3" name="business_current_mission_3" placeholder="Enter previous quarter's mission">
+                            </div>
+                            <div class="input-group">
+                                <label for="business_current_mission_4">Current Mission #4</label>
+                                <input type="text" id="business_current_mission_4" name="business_current_mission_4" placeholder="Enter previous quarter's mission">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="on-track-section">
+                        <h3>Progress Assessment</h3>
+                        <label style="font-size: 1.1em; margin-bottom: 15px; display: block;">Are you currently on track to win this Impossible Game?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="business_on_track" value="YES"> Yes</label>
+                            <label><input type="radio" name="business_on_track" value="NO"> No</label>
+                        </div>
+                        <div class="input-group" style="margin-top: 20px;">
+                            <label for="business_correction_plan">If NO, what's your correction plan?</label>
+                            <textarea id="business_correction_plan" name="business_correction_plan" placeholder="What can you do this week to get back on track?"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Reflection</h3>
+                        <div class="input-group">
+                            <label for="business_story">What story are you telling yourself about your Business progress?</label>
+                            <textarea id="business_story" name="business_story" placeholder="Describe your internal narrative..."></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="business_feelings">What feelings arise when you tell yourself this story?</label>
+                            <input type="text" id="business_feelings" name="business_feelings" placeholder="e.g., Confident, overwhelmed, excited">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6: BODY 12-Month Vision -->
+                <div class="section body-section" data-section="6">
+                    <div class="domain-header">
+                        <span class="domain-icon">💪</span>
+                        <h2 class="domain-title">BODY - 12-Month Vision</h2>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>What fruit would make you pleased with progress in 12 months?</h3>
+                        
+                        <div class="fruit-type reasonable">
+                            <h4>Reasonable Fruit <span class="growth-badge">1-2x Growth</span></h4>
+                            <p class="description-text">
+                                <strong>Reasonable:</strong> Good results that don't exceed the limits prescribed by reason; not excessive, logical, or moderate. These are achievable goals that stretch you but remain within the realm of normal progress.
+                            </p>
+                            <div class="goals-grid">
+                                <input type="text" name="body_reasonable_1" placeholder="e.g., Lose 20 pounds">
+                                <input type="text" name="body_reasonable_2" placeholder="e.g., Run a 5K">
+                                <input type="text" name="body_reasonable_3" placeholder="e.g., Gym 3x per week consistently">
+                                <input type="text" name="body_reasonable_4" placeholder="e.g., Reduce body fat by 5%">
+                            </div>
+                        </div>
+
+                        <div class="fruit-type radical">
+                            <h4>Radical Fruit <span class="growth-badge">4-5x Growth</span></h4>
+                            <p class="description-text">
+                                <strong>Radical:</strong> Extreme results that excessively surpass reasonable, logical, or moderate expectations. These goals would require significant life changes and dedicated effort.
+                            </p>
+                            <div class="goals-grid">
+                                <input type="text" name="body_radical_1" placeholder="e.g., Complete a marathon">
+                                <input type="text" name="body_radical_2" placeholder="e.g., Six-pack abs">
+                                <input type="text" name="body_radical_3" placeholder="e.g., Deadlift 2x bodyweight">
+                                <input type="text" name="body_radical_4" placeholder="e.g., 10% body fat">
+                            </div>
+                        </div>
+
+                        <div class="fruit-type impossible">
+                            <h4>Impossible Fruit <span class="growth-badge">10x Growth</span></h4>
+                            <p class="description-text">
+                                <strong>Impossible:</strong> Utterly not possible, unable to be, exist, incapable of being true or happening. These are breakthrough transformations that seem beyond current capabilities.
+                            </p>
+                            <div class="goals-grid">
+                                <input type="text" name="body_impossible_1" placeholder="e.g., Complete an Ironman">
+                                <input type="text" name="body_impossible_2" placeholder="e.g., Bodybuilding competition">
+                                <input type="text" name="body_impossible_3" placeholder="e.g., Climb Mount Everest">
+                                <input type="text" name="body_impossible_4" placeholder="e.g., Professional athlete level">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 7: BEING 12-Month Vision -->
+                <div class="section being-section" data-section="7">
+                    <div class="domain-header">
+                        <span class="domain-icon">🧠</span>
+                        <h2 class="domain-title">BEING - 12-Month Vision</h2>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>What fruit would make you pleased with progress in 12 months?</h3>
+                        
+                        <div class="fruit-type reasonable">
+                            <h4>Reasonable Fruit <span class="growth-badge">1-2x Growth</span></h4>
+                            <p class="description-text">
+                                <strong>Reasonable:</strong> Good spiritual/mental results within logical limits. Achievable personal development that builds on current practices.
+                            </p>
+                            <div class="goals-grid">
+                                <input type="text" name="being_reasonable_1" placeholder="e.g., Daily 10-min meditation">
+                                <input type="text" name="being_reasonable_2" placeholder="e.g., Read 12 books">
+                                <input type="text" name="being_reasonable_3" placeholder="e.g., Weekly therapy sessions">
+                                <input type="text" name="being_reasonable_4" placeholder="e.g., Journal 3x per week">
+                            </div>
+                        </div>
+
+                        <div class="fruit-type radical">
+                            <h4>Radical Fruit <span class="growth-badge">4-5x Growth</span></h4>
+                            <p class="description-text">
+                                <strong>Radical:</strong> Extreme spiritual breakthroughs beyond reasonable expectations. Deep transformational work requiring significant commitment.
+                            </p>
+                            <div class="goals-grid">
+                                <input type="text" name="being_radical_1" placeholder="e.g., 30-day silent retreat">
+                                <input type="text" name="being_radical_2" placeholder="e.g., Heal family trauma">
+                                <input type="text" name="being_radical_3" placeholder="e.g., Daily hour meditation">
+                                <input type="text" name="being_radical_4" placeholder="e.g., Master new philosophy">
+                            </div>
+                        </div>
+
+                        <div class="fruit-type impossible">
+                            <h4>Impossible Fruit <span class="growth-badge">10x Growth</span></h4>
+                            <p class="description-text">
+                                <strong>Impossible:</strong> Complete spiritual transformation that seems utterly beyond reach. Life-changing breakthroughs in consciousness and being.
+                            </p>
+                            <div class="goals-grid">
+                                <input type="text" name="being_impossible_1" placeholder="e.g., Enlightenment experience">
+                                <input type="text" name="being_impossible_2" placeholder="e.g., Write spiritual book">
+                                <input type="text" name="being_impossible_3" placeholder="e.g., Lead 100 people">
+                                <input type="text" name="being_impossible_4" placeholder="e.g., Complete ego death">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 8: BALANCE 12-Month Vision -->
+                <div class="section balance-section" data-section="8">
+                    <div class="domain-header">
+                        <span class="domain-icon">⚖️</span>
+                        <h2 class="domain-title">BALANCE - 12-Month Vision</h2>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>What fruit would make you pleased with progress in 12 months?</h3>
+                        
+                        <div class="fruit-type reasonable">
+                            <h4>Reasonable Fruit <span class="growth-badge">1-2x Growth</span></h4>
+                            <p class="description-text">
+                                <strong>Reasonable:</strong> Good relationship results within logical limits. Steady improvements in family and social connections.
+                            </p>
+                            <div class="goals-grid">
+                                <input type="text" name="balance_reasonable_1" placeholder="e.g., Weekly date nights">
+                                <input type="text" name="balance_reasonable_2" placeholder="e.g., Monthly family dinners">
+                                <input type="text" name="balance_reasonable_3" placeholder="e.g., Call parents weekly">
+                                <input type="text" name="balance_reasonable_4" placeholder="e.g., Join social group">
+                            </div>
+                        </div>
+
+                        <div class="fruit-type radical">
+                            <h4>Radical Fruit <span class="growth-badge">4-5x Growth</span></h4>
+                            <p class="description-text">
+                                <strong>Radical:</strong> Extreme relationship transformations. Major breakthroughs in connection and intimacy.
+                            </p>
+                            <div class="goals-grid">
+                                <input type="text" name="balance_radical_1" placeholder="e.g., Second honeymoon">
+                                <input type="text" name="balance_radical_2" placeholder="e.g., Heal family rifts">
+                                <input type="text" name="balance_radical_3" placeholder="e.g., Build community">
+                                <input type="text" name="balance_radical_4" placeholder="e.g., Deep vulnerability">
+                            </div>
+                        </div>
+
+                        <div class="fruit-type impossible">
+                            <h4>Impossible Fruit <span class="growth-badge">10x Growth</span></h4>
+                            <p class="description-text">
+                                <strong>Impossible:</strong> Complete relationship revolution that seems impossible. Total transformation of family and social dynamics.
+                            </p>
+                            <div class="goals-grid">
+                                <input type="text" name="balance_impossible_1" placeholder="e.g., Unite entire family">
+                                <input type="text" name="balance_impossible_2" placeholder="e.g., Year-long travel">
+                                <input type="text" name="balance_impossible_3" placeholder="e.g., Impact 1000 families">
+                                <input type="text" name="balance_impossible_4" placeholder="e.g., Perfect marriage">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 9: BUSINESS 12-Month Vision -->
+                <div class="section business-section" data-section="9">
+                    <div class="domain-header">
+                        <span class="domain-icon">💼</span>
+                        <h2 class="domain-title">BUSINESS - 12-Month Vision</h2>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>What fruit would make you pleased with progress in 12 months?</h3>
+                        
+                        <div class="fruit-type reasonable">
+                            <h4>Reasonable Fruit <span class="growth-badge">1-2x Growth</span></h4>
+                            <p class="description-text">
+                                <strong>Reasonable:</strong> Good business results within logical limits. Steady growth and improvements in income and career.
+                            </p>
+                            <div class="goals-grid">
+                                <input type="text" name="business_reasonable_1" placeholder="e.g., 20% revenue increase">
+                                <input type="text" name="business_reasonable_2" placeholder="e.g., Hire 2 employees">
+                                <input type="text" name="business_reasonable_3" placeholder="e.g., Launch new product">
+                                <input type="text" name="business_reasonable_4" placeholder="e.g., Double email list">
+                            </div>
+                        </div>
+
+                        <div class="fruit-type radical">
+                            <h4>Radical Fruit <span class="growth-badge">4-5x Growth</span></h4>
+                            <p class="description-text">
+                                <strong>Radical:</strong> Extreme business growth beyond reasonable expectations. Major breakthroughs in revenue and impact.
+                            </p>
+                            <div class="goals-grid">
+                                <input type="text" name="business_radical_1" placeholder="e.g., 5x revenue">
+                                <input type="text" name="business_radical_2" placeholder="e.g., National expansion">
+                                <input type="text" name="business_radical_3" placeholder="e.g., Team of 20">
+                                <input type="text" name="business_radical_4" placeholder="e.g., Industry leader">
+                            </div>
+                        </div>
+
+                        <div class="fruit-type impossible">
+                            <h4>Impossible Fruit <span class="growth-badge">10x Growth</span></h4>
+                            <p class="description-text">
+                                <strong>Impossible:</strong> Complete business transformation that seems impossible. Paradigm-shifting success and wealth creation.
+                            </p>
+                            <div class="goals-grid">
+                                <input type="text" name="business_impossible_1" placeholder="e.g., $10M revenue">
+                                <input type="text" name="business_impossible_2" placeholder="e.g., Sell company">
+                                <input type="text" name="business_impossible_3" placeholder="e.g., IPO">
+                                <input type="text" name="business_impossible_4" placeholder="e.g., Retire at 40">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 10: BODY New Quarterly Missions -->
+                <div class="section body-section" data-section="10">
+                    <div class="domain-header">
+                        <span class="domain-icon">💪</span>
+                        <h2 class="domain-title">BODY - New Quarterly Missions</h2>
+                    </div>
+
                     <div class="missions-section">
-                        <h3>Quarterly Missions (90-Day Action Plan)</h3>
+                        <h3>90-Day Action Plan</h3>
+                        <p style="margin-bottom: 20px; color: #718096;">Define specific, actionable missions for the next quarter that move you toward your 12-month vision.</p>
                         <div class="goals-grid">
                             <div class="input-group">
                                 <label for="body_mission_1">Final Mission #1</label>
@@ -607,7 +1024,6 @@
                         </div>
                     </div>
 
-                    <!-- Metrics -->
                     <div class="metric-section">
                         <h3>Primary Measurable Result</h3>
                         <div class="input-group">
@@ -620,122 +1036,23 @@
                                 <input type="number" id="body_metric_current" name="body_metric_current" step="0.01">
                             </div>
                             <div class="input-group">
-                                <label for="body_metric_target">Target Value</label>
+                                <label for="body_metric_target">Target Value (End of Quarter)</label>
                                 <input type="number" id="body_metric_target" name="body_metric_target" step="0.01">
                             </div>
-                        </div>
-                        <div class="radio-group" style="margin-top: 15px;">
-                            <label>On track for this metric?</label>
-                            <label><input type="radio" name="body_mission_on_track" value="YES"> Yes</label>
-                            <label><input type="radio" name="body_mission_on_track" value="NO"> No</label>
                         </div>
                     </div>
                 </div>
 
-                <!-- Section 3: BEING Domain -->
-                <div class="section" data-section="3">
+                <!-- Section 11: BEING New Quarterly Missions -->
+                <div class="section being-section" data-section="11">
                     <div class="domain-header">
                         <span class="domain-icon">🧠</span>
-                        <h2 class="domain-title">BEING Domain</h2>
+                        <h2 class="domain-title">BEING - New Quarterly Missions</h2>
                     </div>
 
-                    <!-- Current Impossible Goals -->
-                    <div class="subsection">
-                        <h3>Current Impossible Goals</h3>
-                        <div class="info-box">
-                            <strong>Impossible:</strong> Spiritual/mental breakthroughs that seem utterly not possible (10x growth)
-                        </div>
-                        <div class="goals-grid">
-                            <div class="input-group">
-                                <label for="being_goal_1">Impossible Goal #1</label>
-                                <input type="text" id="being_goal_1" name="being_goal_1" placeholder="e.g., Daily 2-hour meditation practice">
-                            </div>
-                            <div class="input-group">
-                                <label for="being_goal_2">Impossible Goal #2</label>
-                                <input type="text" id="being_goal_2" name="being_goal_2" placeholder="e.g., Complete silence retreat">
-                            </div>
-                            <div class="input-group">
-                                <label for="being_goal_3">Impossible Goal #3</label>
-                                <input type="text" id="being_goal_3" name="being_goal_3" placeholder="e.g., Write and publish spiritual book">
-                            </div>
-                            <div class="input-group">
-                                <label for="being_goal_4">Impossible Goal #4</label>
-                                <input type="text" id="being_goal_4" name="being_goal_4" placeholder="e.g., Lead 100 people in transformation">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Progress Check -->
-                    <div class="on-track-section">
-                        <h3>Progress Assessment</h3>
-                        <label>Are you currently on track to win this Impossible Game?</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="being_on_track" value="YES"> Yes</label>
-                            <label><input type="radio" name="being_on_track" value="NO"> No</label>
-                        </div>
-                        <div class="input-group">
-                            <label for="being_correction_plan">If NO, what's your correction plan?</label>
-                            <textarea id="being_correction_plan" name="being_correction_plan" placeholder="What can you do this week to get back on track?"></textarea>
-                        </div>
-                    </div>
-
-                    <!-- Story & Feelings -->
-                    <div class="subsection">
-                        <h3>Reflection</h3>
-                        <div class="input-group">
-                            <label for="being_story">What story are you telling yourself about your Being progress?</label>
-                            <textarea id="being_story" name="being_story" placeholder="Describe your internal narrative..."></textarea>
-                        </div>
-                        <div class="input-group">
-                            <label for="being_feelings">What feelings arise when you tell yourself this story?</label>
-                            <input type="text" id="being_feelings" name="being_feelings" placeholder="e.g., Peaceful, anxious, grounded">
-                        </div>
-                    </div>
-
-                    <!-- 12-Month Vision -->
-                    <div class="fruit-section">
-                        <h3>12-Month Vision: What fruit would make you pleased with progress?</h3>
-                        
-                        <!-- Reasonable Fruit -->
-                        <div class="fruit-type reasonable">
-                            <h4>Reasonable Fruit <span class="growth-badge">1-2x Growth</span></h4>
-                            <p style="margin-bottom: 15px; color: #718096;">Good spiritual/mental results within logical limits</p>
-                            <div class="goals-grid">
-                                <input type="text" name="being_reasonable_1" placeholder="Reasonable outcome #1">
-                                <input type="text" name="being_reasonable_2" placeholder="Reasonable outcome #2">
-                                <input type="text" name="being_reasonable_3" placeholder="Reasonable outcome #3">
-                                <input type="text" name="being_reasonable_4" placeholder="Reasonable outcome #4">
-                            </div>
-                        </div>
-
-                        <!-- Radical Fruit -->
-                        <div class="fruit-type radical">
-                            <h4>Radical Fruit <span class="growth-badge">4-5x Growth</span></h4>
-                            <p style="margin-bottom: 15px; color: #718096;">Extreme spiritual breakthroughs beyond reasonable</p>
-                            <div class="goals-grid">
-                                <input type="text" name="being_radical_1" placeholder="Radical outcome #1">
-                                <input type="text" name="being_radical_2" placeholder="Radical outcome #2">
-                                <input type="text" name="being_radical_3" placeholder="Radical outcome #3">
-                                <input type="text" name="being_radical_4" placeholder="Radical outcome #4">
-                            </div>
-                        </div>
-
-                        <!-- Impossible Fruit -->
-                        <div class="fruit-type impossible">
-                            <h4>Impossible Fruit <span class="growth-badge">10x Growth</span></h4>
-                            <p style="margin-bottom: 15px; color: #718096;">Complete spiritual transformation</p>
-                            <div class="goals-grid">
-                                <input type="text" name="being_impossible_1" placeholder="Impossible outcome #1">
-                                <input type="text" name="being_impossible_2" placeholder="Impossible outcome #2">
-                                <input type="text" name="being_impossible_3" placeholder="Impossible outcome #3">
-                                <input type="text" name="being_impossible_4" placeholder="Impossible outcome #4">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Quarterly Missions -->
                     <div class="missions-section">
-                        <h3>Quarterly Missions (90-Day Action Plan)</h3>
+                        <h3>90-Day Action Plan</h3>
+                        <p style="margin-bottom: 20px; color: #718096;">Define specific, actionable missions for the next quarter that move you toward your 12-month vision.</p>
                         <div class="goals-grid">
                             <div class="input-group">
                                 <label for="being_mission_1">Final Mission #1</label>
@@ -756,12 +1073,11 @@
                         </div>
                     </div>
 
-                    <!-- Metrics -->
                     <div class="metric-section">
                         <h3>Primary Measurable Result</h3>
                         <div class="input-group">
                             <label for="being_primary_metric">What metric will you track?</label>
-                            <input type="text" id="being_primary_metric" name="being_primary_metric" placeholder="e.g., Meditation days, Journal entries, Prayer sessions">
+                            <input type="text" id="being_primary_metric" name="being_primary_metric" placeholder="e.g., Meditation days, Journal entries, Books read">
                         </div>
                         <div class="metric-inputs">
                             <div class="input-group">
@@ -769,122 +1085,23 @@
                                 <input type="number" id="being_metric_current" name="being_metric_current" step="0.01">
                             </div>
                             <div class="input-group">
-                                <label for="being_metric_target">Target Value</label>
+                                <label for="being_metric_target">Target Value (End of Quarter)</label>
                                 <input type="number" id="being_metric_target" name="being_metric_target" step="0.01">
                             </div>
-                        </div>
-                        <div class="radio-group" style="margin-top: 15px;">
-                            <label>On track for this metric?</label>
-                            <label><input type="radio" name="being_mission_on_track" value="YES"> Yes</label>
-                            <label><input type="radio" name="being_mission_on_track" value="NO"> No</label>
                         </div>
                     </div>
                 </div>
 
-                <!-- Section 4: BALANCE Domain -->
-                <div class="section" data-section="4">
+                <!-- Section 12: BALANCE New Quarterly Missions -->
+                <div class="section balance-section" data-section="12">
                     <div class="domain-header">
                         <span class="domain-icon">⚖️</span>
-                        <h2 class="domain-title">BALANCE Domain</h2>
+                        <h2 class="domain-title">BALANCE - New Quarterly Missions</h2>
                     </div>
 
-                    <!-- Current Impossible Goals -->
-                    <div class="subsection">
-                        <h3>Current Impossible Goals</h3>
-                        <div class="info-box">
-                            <strong>Impossible:</strong> Relationship breakthroughs that seem utterly not possible (10x growth)
-                        </div>
-                        <div class="goals-grid">
-                            <div class="input-group">
-                                <label for="balance_goal_1">Impossible Goal #1</label>
-                                <input type="text" id="balance_goal_1" name="balance_goal_1" placeholder="e.g., Weekly date nights for entire year">
-                            </div>
-                            <div class="input-group">
-                                <label for="balance_goal_2">Impossible Goal #2</label>
-                                <input type="text" id="balance_goal_2" name="balance_goal_2" placeholder="e.g., Family world travel adventure">
-                            </div>
-                            <div class="input-group">
-                                <label for="balance_goal_3">Impossible Goal #3</label>
-                                <input type="text" id="balance_goal_3" name="balance_goal_3" placeholder="e.g., Heal all family wounds">
-                            </div>
-                            <div class="input-group">
-                                <label for="balance_goal_4">Impossible Goal #4</label>
-                                <input type="text" id="balance_goal_4" name="balance_goal_4" placeholder="e.g., Create community of 100 families">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Progress Check -->
-                    <div class="on-track-section">
-                        <h3>Progress Assessment</h3>
-                        <label>Are you currently on track to win this Impossible Game?</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="balance_on_track" value="YES"> Yes</label>
-                            <label><input type="radio" name="balance_on_track" value="NO"> No</label>
-                        </div>
-                        <div class="input-group">
-                            <label for="balance_correction_plan">If NO, what's your correction plan?</label>
-                            <textarea id="balance_correction_plan" name="balance_correction_plan" placeholder="What can you do this week to get back on track?"></textarea>
-                        </div>
-                    </div>
-
-                    <!-- Story & Feelings -->
-                    <div class="subsection">
-                        <h3>Reflection</h3>
-                        <div class="input-group">
-                            <label for="balance_story">What story are you telling yourself about your Balance progress?</label>
-                            <textarea id="balance_story" name="balance_story" placeholder="Describe your internal narrative..."></textarea>
-                        </div>
-                        <div class="input-group">
-                            <label for="balance_feelings">What feelings arise when you tell yourself this story?</label>
-                            <input type="text" id="balance_feelings" name="balance_feelings" placeholder="e.g., Connected, isolated, harmonious">
-                        </div>
-                    </div>
-
-                    <!-- 12-Month Vision -->
-                    <div class="fruit-section">
-                        <h3>12-Month Vision: What fruit would make you pleased with progress?</h3>
-                        
-                        <!-- Reasonable Fruit -->
-                        <div class="fruit-type reasonable">
-                            <h4>Reasonable Fruit <span class="growth-badge">1-2x Growth</span></h4>
-                            <p style="margin-bottom: 15px; color: #718096;">Good relationship results within logical limits</p>
-                            <div class="goals-grid">
-                                <input type="text" name="balance_reasonable_1" placeholder="Reasonable outcome #1">
-                                <input type="text" name="balance_reasonable_2" placeholder="Reasonable outcome #2">
-                                <input type="text" name="balance_reasonable_3" placeholder="Reasonable outcome #3">
-                                <input type="text" name="balance_reasonable_4" placeholder="Reasonable outcome #4">
-                            </div>
-                        </div>
-
-                        <!-- Radical Fruit -->
-                        <div class="fruit-type radical">
-                            <h4>Radical Fruit <span class="growth-badge">4-5x Growth</span></h4>
-                            <p style="margin-bottom: 15px; color: #718096;">Extreme relationship transformations</p>
-                            <div class="goals-grid">
-                                <input type="text" name="balance_radical_1" placeholder="Radical outcome #1">
-                                <input type="text" name="balance_radical_2" placeholder="Radical outcome #2">
-                                <input type="text" name="balance_radical_3" placeholder="Radical outcome #3">
-                                <input type="text" name="balance_radical_4" placeholder="Radical outcome #4">
-                            </div>
-                        </div>
-
-                        <!-- Impossible Fruit -->
-                        <div class="fruit-type impossible">
-                            <h4>Impossible Fruit <span class="growth-badge">10x Growth</span></h4>
-                            <p style="margin-bottom: 15px; color: #718096;">Complete relationship revolution</p>
-                            <div class="goals-grid">
-                                <input type="text" name="balance_impossible_1" placeholder="Impossible outcome #1">
-                                <input type="text" name="balance_impossible_2" placeholder="Impossible outcome #2">
-                                <input type="text" name="balance_impossible_3" placeholder="Impossible outcome #3">
-                                <input type="text" name="balance_impossible_4" placeholder="Impossible outcome #4">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Quarterly Missions -->
                     <div class="missions-section">
-                        <h3>Quarterly Missions (90-Day Action Plan)</h3>
+                        <h3>90-Day Action Plan</h3>
+                        <p style="margin-bottom: 20px; color: #718096;">Define specific, actionable missions for the next quarter that move you toward your 12-month vision.</p>
                         <div class="goals-grid">
                             <div class="input-group">
                                 <label for="balance_mission_1">Final Mission #1</label>
@@ -905,12 +1122,11 @@
                         </div>
                     </div>
 
-                    <!-- Metrics -->
                     <div class="metric-section">
                         <h3>Primary Measurable Result</h3>
                         <div class="input-group">
                             <label for="balance_primary_metric">What metric will you track?</label>
-                            <input type="text" id="balance_primary_metric" name="balance_primary_metric" placeholder="e.g., Date nights, Family dinners, Connection calls">
+                            <input type="text" id="balance_primary_metric" name="balance_primary_metric" placeholder="e.g., Date nights, Family dinners, Quality time hours">
                         </div>
                         <div class="metric-inputs">
                             <div class="input-group">
@@ -918,122 +1134,23 @@
                                 <input type="number" id="balance_metric_current" name="balance_metric_current" step="0.01">
                             </div>
                             <div class="input-group">
-                                <label for="balance_metric_target">Target Value</label>
+                                <label for="balance_metric_target">Target Value (End of Quarter)</label>
                                 <input type="number" id="balance_metric_target" name="balance_metric_target" step="0.01">
                             </div>
-                        </div>
-                        <div class="radio-group" style="margin-top: 15px;">
-                            <label>On track for this metric?</label>
-                            <label><input type="radio" name="balance_mission_on_track" value="YES"> Yes</label>
-                            <label><input type="radio" name="balance_mission_on_track" value="NO"> No</label>
                         </div>
                     </div>
                 </div>
 
-                <!-- Section 5: BUSINESS Domain -->
-                <div class="section" data-section="5">
+                <!-- Section 13: BUSINESS New Quarterly Missions -->
+                <div class="section business-section" data-section="13">
                     <div class="domain-header">
                         <span class="domain-icon">💼</span>
-                        <h2 class="domain-title">BUSINESS Domain</h2>
+                        <h2 class="domain-title">BUSINESS - New Quarterly Missions</h2>
                     </div>
 
-                    <!-- Current Impossible Goals -->
-                    <div class="subsection">
-                        <h3>Current Impossible Goals</h3>
-                        <div class="info-box">
-                            <strong>Impossible:</strong> Business breakthroughs that seem utterly not possible (10x growth)
-                        </div>
-                        <div class="goals-grid">
-                            <div class="input-group">
-                                <label for="business_goal_1">Impossible Goal #1</label>
-                                <input type="text" id="business_goal_1" name="business_goal_1" placeholder="e.g., $1M annual revenue">
-                            </div>
-                            <div class="input-group">
-                                <label for="business_goal_2">Impossible Goal #2</label>
-                                <input type="text" id="business_goal_2" name="business_goal_2" placeholder="e.g., 10,000 customers">
-                            </div>
-                            <div class="input-group">
-                                <label for="business_goal_3">Impossible Goal #3</label>
-                                <input type="text" id="business_goal_3" name="business_goal_3" placeholder="e.g., Exit business for $10M">
-                            </div>
-                            <div class="input-group">
-                                <label for="business_goal_4">Impossible Goal #4</label>
-                                <input type="text" id="business_goal_4" name="business_goal_4" placeholder="e.g., 4-day work week">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Progress Check -->
-                    <div class="on-track-section">
-                        <h3>Progress Assessment</h3>
-                        <label>Are you currently on track to win this Impossible Game?</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="business_on_track" value="YES"> Yes</label>
-                            <label><input type="radio" name="business_on_track" value="NO"> No</label>
-                        </div>
-                        <div class="input-group">
-                            <label for="business_correction_plan">If NO, what's your correction plan?</label>
-                            <textarea id="business_correction_plan" name="business_correction_plan" placeholder="What can you do this week to get back on track?"></textarea>
-                        </div>
-                    </div>
-
-                    <!-- Story & Feelings -->
-                    <div class="subsection">
-                        <h3>Reflection</h3>
-                        <div class="input-group">
-                            <label for="business_story">What story are you telling yourself about your Business progress?</label>
-                            <textarea id="business_story" name="business_story" placeholder="Describe your internal narrative..."></textarea>
-                        </div>
-                        <div class="input-group">
-                            <label for="business_feelings">What feelings arise when you tell yourself this story?</label>
-                            <input type="text" id="business_feelings" name="business_feelings" placeholder="e.g., Confident, overwhelmed, excited">
-                        </div>
-                    </div>
-
-                    <!-- 12-Month Vision -->
-                    <div class="fruit-section">
-                        <h3>12-Month Vision: What fruit would make you pleased with progress?</h3>
-                        
-                        <!-- Reasonable Fruit -->
-                        <div class="fruit-type reasonable">
-                            <h4>Reasonable Fruit <span class="growth-badge">1-2x Growth</span></h4>
-                            <p style="margin-bottom: 15px; color: #718096;">Good business results within logical limits</p>
-                            <div class="goals-grid">
-                                <input type="text" name="business_reasonable_1" placeholder="Reasonable outcome #1">
-                                <input type="text" name="business_reasonable_2" placeholder="Reasonable outcome #2">
-                                <input type="text" name="business_reasonable_3" placeholder="Reasonable outcome #3">
-                                <input type="text" name="business_reasonable_4" placeholder="Reasonable outcome #4">
-                            </div>
-                        </div>
-
-                        <!-- Radical Fruit -->
-                        <div class="fruit-type radical">
-                            <h4>Radical Fruit <span class="growth-badge">4-5x Growth</span></h4>
-                            <p style="margin-bottom: 15px; color: #718096;">Extreme business growth beyond reasonable</p>
-                            <div class="goals-grid">
-                                <input type="text" name="business_radical_1" placeholder="Radical outcome #1">
-                                <input type="text" name="business_radical_2" placeholder="Radical outcome #2">
-                                <input type="text" name="business_radical_3" placeholder="Radical outcome #3">
-                                <input type="text" name="business_radical_4" placeholder="Radical outcome #4">
-                            </div>
-                        </div>
-
-                        <!-- Impossible Fruit -->
-                        <div class="fruit-type impossible">
-                            <h4>Impossible Fruit <span class="growth-badge">10x Growth</span></h4>
-                            <p style="margin-bottom: 15px; color: #718096;">Complete business transformation</p>
-                            <div class="goals-grid">
-                                <input type="text" name="business_impossible_1" placeholder="Impossible outcome #1">
-                                <input type="text" name="business_impossible_2" placeholder="Impossible outcome #2">
-                                <input type="text" name="business_impossible_3" placeholder="Impossible outcome #3">
-                                <input type="text" name="business_impossible_4" placeholder="Impossible outcome #4">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Quarterly Missions -->
                     <div class="missions-section">
-                        <h3>Quarterly Missions (90-Day Action Plan)</h3>
+                        <h3>90-Day Action Plan</h3>
+                        <p style="margin-bottom: 20px; color: #718096;">Define specific, actionable missions for the next quarter that move you toward your 12-month vision.</p>
                         <div class="goals-grid">
                             <div class="input-group">
                                 <label for="business_mission_1">Final Mission #1</label>
@@ -1054,7 +1171,6 @@
                         </div>
                     </div>
 
-                    <!-- Metrics -->
                     <div class="metric-section">
                         <h3>Primary Measurable Result</h3>
                         <div class="input-group">
@@ -1067,29 +1183,34 @@
                                 <input type="number" id="business_metric_current" name="business_metric_current" step="0.01">
                             </div>
                             <div class="input-group">
-                                <label for="business_metric_target">Target Value</label>
+                                <label for="business_metric_target">Target Value (End of Quarter)</label>
                                 <input type="number" id="business_metric_target" name="business_metric_target" step="0.01">
                             </div>
-                        </div>
-                        <div class="radio-group" style="margin-top: 15px;">
-                            <label>On track for this metric?</label>
-                            <label><input type="radio" name="business_mission_on_track" value="YES"> Yes</label>
-                            <label><input type="radio" name="business_mission_on_track" value="NO"> No</label>
                         </div>
                     </div>
                 </div>
 
-                <!-- Section 6: Review & Submit -->
-                <div class="section" data-section="6">
-                    <h2 style="margin-bottom: 30px; color: #2d3748;">Review Your Impossible Game</h2>
+                <!-- Section 14: Review & Submit -->
+                <div class="section" data-section="14">
+                    <h2 style="margin-bottom: 30px; color: #2d3748;">Review Your Quarterly Impossible Game</h2>
                     
                     <div class="info-box">
                         <strong>Almost Done!</strong>
-                        <p style="margin-top: 10px;">Review your Quarterly Impossible Game summary below. Click Submit when you're ready to receive your AI-powered analysis.</p>
+                        <p style="margin-top: 10px;">Review your Quarterly Impossible Game summary below. Click Submit when you're ready to receive your AI-powered strategic analysis.</p>
                     </div>
 
                     <div class="summary-grid" id="summaryContent">
                         <!-- Summary will be populated by JavaScript -->
+                    </div>
+
+                    <div class="info-box" style="margin-top: 30px; background: #f0fff4; border-color: #48bb78;">
+                        <strong>What Happens Next:</strong>
+                        <ul style="margin-top: 10px; margin-left: 20px;">
+                            <li>Your assessment will be analyzed by AI for strategic insights</li>
+                            <li>You'll receive a comprehensive report via email within 30 minutes</li>
+                            <li>Your quarterly missions will be tracked for next quarter's review</li>
+                            <li>Weekly check-in reminders will keep you accountable</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -1104,7 +1225,25 @@
 
     <script>
         let currentSection = 1;
-        const totalSections = 6;
+        const totalSections = 14;
+
+        // Section titles for step indicator
+        const sectionTitles = {
+            1: "Personal Info",
+            2: "Body Review",
+            3: "Being Review",
+            4: "Balance Review",
+            5: "Business Review",
+            6: "Body Vision",
+            7: "Being Vision",
+            8: "Balance Vision",
+            9: "Business Vision",
+            10: "Body Missions",
+            11: "Being Missions",
+            12: "Balance Missions",
+            13: "Business Missions",
+            14: "Review & Submit"
+        };
 
         function showSection(sectionNumber) {
             // Hide all sections
@@ -1115,18 +1254,12 @@
             // Show current section
             document.querySelector(`[data-section="${sectionNumber}"]`).classList.add('active');
 
-            // Update progress steps
-            document.querySelectorAll('.step').forEach((step, index) => {
-                if (index + 1 < sectionNumber) {
-                    step.classList.add('completed');
-                    step.classList.remove('active');
-                } else if (index + 1 === sectionNumber) {
-                    step.classList.add('active');
-                    step.classList.remove('completed');
-                } else {
-                    step.classList.remove('active', 'completed');
-                }
-            });
+            // Update progress bar
+            const progress = ((sectionNumber - 1) / (totalSections - 1)) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            // Update step indicator
+            document.getElementById('stepIndicator').textContent = `Step ${sectionNumber} of ${totalSections} - ${sectionTitles[sectionNumber]}`;
 
             // Update navigation buttons
             const prevBtn = document.getElementById('prevBtn');
@@ -1185,23 +1318,24 @@
             let summaryHTML = '';
             
             domains.forEach(domain => {
-                const goals = [];
+                const missions = [];
                 for (let i = 1; i <= 4; i++) {
-                    const goal = formData.get(`${domain}_goal_${i}`);
-                    if (goal) goals.push(goal);
+                    const mission = formData.get(`${domain}_mission_${i}`);
+                    if (mission) missions.push(mission);
                 }
 
                 const metric = formData.get(`${domain}_primary_metric`);
                 const current = formData.get(`${domain}_metric_current`);
                 const target = formData.get(`${domain}_metric_target`);
+                const onTrack = formData.get(`${domain}_on_track`);
 
                 summaryHTML += `
                     <div class="summary-card">
-                        <h4>${domainIcons[domain]} ${domain.toUpperCase()} Domain</h4>
-                        <p><strong>Goals:</strong> ${goals.length || 0} set</p>
-                        <p><strong>On Track:</strong> ${formData.get(`${domain}_on_track`) || 'Not set'}</p>
-                        ${metric ? `<p><strong>Metric:</strong> ${metric}</p>` : ''}
-                        ${current && target ? `<p><strong>Progress:</strong> ${current} → ${target}</p>` : ''}
+                        <h4><span class="domain-icon">${domainIcons[domain]}</span> ${domain.toUpperCase()}</h4>
+                        <div class="summary-item"><strong>Current Status:</strong> ${onTrack || 'Not set'}</div>
+                        <div class="summary-item"><strong>New Missions:</strong> ${missions.length} defined</div>
+                        ${metric ? `<div class="summary-item"><strong>Tracking:</strong> ${metric}</div>` : ''}
+                        ${current && target ? `<div class="summary-item"><strong>Target:</strong> ${current} → ${target}</div>` : ''}
                     </div>
                 `;
             });
@@ -1228,11 +1362,49 @@
             }
         });
 
-        // Set today's date
+        // Set today's date and load previous quarter data
         document.addEventListener('DOMContentLoaded', function() {
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('submission_date').value = today;
+            
+            // Load previous quarter data when email is entered
+            document.getElementById('user_email').addEventListener('blur', function() {
+                if (this.value) {
+                    loadPreviousQuarterData(this.value);
+                }
+            });
         });
+
+        // Function to load previous quarter data
+        async function loadPreviousQuarterData(email) {
+            try {
+                // This would typically fetch from your backend
+                // For now, it checks localStorage as a placeholder
+                const storageKey = `quarterly_missions_${email.replace('@', '_')}`;
+                const previousData = localStorage.getItem(storageKey);
+                
+                if (previousData) {
+                    const data = JSON.parse(previousData);
+                    
+                    // Populate previous missions for each domain
+                    const domains = ['body', 'being', 'balance', 'business'];
+                    domains.forEach(domain => {
+                        if (data[domain]) {
+                            for (let i = 1; i <= 4; i++) {
+                                const missionField = document.getElementById(`${domain}_current_mission_${i}`);
+                                if (missionField && data[domain][`mission_${i}`]) {
+                                    missionField.value = data[domain][`mission_${i}`];
+                                }
+                            }
+                        }
+                    });
+                    
+                    console.log('Previous quarter data loaded');
+                }
+            } catch (error) {
+                console.error('Error loading previous quarter data:', error);
+            }
+        }
 
         // Form submission
         document.getElementById('impossibleGameForm').addEventListener('submit', async function(e) {
@@ -1259,9 +1431,10 @@
             // Add analytics
             data.analytics = {
                 completionTime: Date.now(),
-                startTime: Date.now() - (15 * 60 * 1000), // Assume 15 minutes
-                totalFields: formData.entries.length,
-                completedFields: Array.from(formData.entries()).filter(([k,v]) => v).length
+                startTime: Date.now() - (20 * 60 * 1000), // Assume 20 minutes
+                totalFields: Array.from(formData.entries()).length,
+                completedFields: Array.from(formData.entries()).filter(([k,v]) => v).length,
+                completionRate: Math.round((Array.from(formData.entries()).filter(([k,v]) => v).length / Array.from(formData.entries()).length) * 100)
             };
             
             // Add metadata
@@ -1273,6 +1446,38 @@
             };
             
             try {
+                // Save current missions for next quarter reference
+                const missionsData = {
+                    body: {
+                        mission_1: formData.get('body_mission_1'),
+                        mission_2: formData.get('body_mission_2'),
+                        mission_3: formData.get('body_mission_3'),
+                        mission_4: formData.get('body_mission_4')
+                    },
+                    being: {
+                        mission_1: formData.get('being_mission_1'),
+                        mission_2: formData.get('being_mission_2'),
+                        mission_3: formData.get('being_mission_3'),
+                        mission_4: formData.get('being_mission_4')
+                    },
+                    balance: {
+                        mission_1: formData.get('balance_mission_1'),
+                        mission_2: formData.get('balance_mission_2'),
+                        mission_3: formData.get('balance_mission_3'),
+                        mission_4: formData.get('balance_mission_4')
+                    },
+                    business: {
+                        mission_1: formData.get('business_mission_1'),
+                        mission_2: formData.get('business_mission_2'),
+                        mission_3: formData.get('business_mission_3'),
+                        mission_4: formData.get('business_mission_4')
+                    }
+                };
+                
+                // Store for next quarter (this would typically go to your backend)
+                const storageKey = `quarterly_missions_${formData.get('user_email').replace('@', '_')}`;
+                localStorage.setItem(storageKey, JSON.stringify(missionsData));
+                
                 // Submit to n8n webhook
                 const response = await fetch('https://n8n-production-3280.up.railway.app/webhook/quarterly-impossible-game', {
                     method: 'POST',
@@ -1287,6 +1492,11 @@
                     this.reset();
                     currentSection = 1;
                     showSection(1);
+                    // Reset progress steps
+                    document.querySelectorAll('.step').forEach((step, index) => {
+                        step.classList.remove('completed', 'active');
+                        if (index === 0) step.classList.add('active');
+                    });
                 } else {
                     throw new Error('Submission failed');
                 }
@@ -1298,6 +1508,65 @@
                 submitBtn.textContent = 'Submit Assessment';
             }
         });
+
+        // Update progress steps when changing sections
+        function updateProgressSteps(sectionNumber) {
+            document.querySelectorAll('.step').forEach((step, index) => {
+                if (index + 1 < sectionNumber) {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                } else if (index + 1 === sectionNumber) {
+                    step.classList.add('active');
+                    step.classList.remove('completed');
+                } else {
+                    step.classList.remove('active', 'completed');
+                }
+            });
+        }
+
+        // Update showSection to include progress steps
+        function showSection(sectionNumber) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show current section
+            document.querySelector(`[data-section="${sectionNumber}"]`).classList.add('active');
+
+            // Update progress bar
+            const progress = ((sectionNumber - 1) / (totalSections - 1)) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            // Update step indicator
+            document.getElementById('stepIndicator').textContent = `Step ${sectionNumber} of ${totalSections} - ${sectionTitles[sectionNumber]}`;
+
+            // Update progress steps
+            updateProgressSteps(sectionNumber);
+
+            // Update navigation buttons
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (sectionNumber === 1) {
+                prevBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = 'block';
+            }
+
+            if (sectionNumber === totalSections) {
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'block';
+                generateSummary();
+            } else {
+                nextBtn.style.display = 'block';
+                submitBtn.style.display = 'none';
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>
