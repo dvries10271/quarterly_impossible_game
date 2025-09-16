@@ -1033,11 +1033,11 @@
                         <div class="metric-inputs">
                             <div class="input-group">
                                 <label for="body_metric_current">Current Value</label>
-                                <input type="number" id="body_metric_current" name="body_metric_current" step="0.01">
+                                <input type="number" id="body_metric_current" name="body_metric_current" step="0.01" min="0">
                             </div>
                             <div class="input-group">
                                 <label for="body_metric_target">Target Value (End of Quarter)</label>
-                                <input type="number" id="body_metric_target" name="body_metric_target" step="0.01">
+                                <input type="number" id="body_metric_target" name="body_metric_target" step="0.01" min="0">
                             </div>
                         </div>
                     </div>
@@ -1082,11 +1082,11 @@
                         <div class="metric-inputs">
                             <div class="input-group">
                                 <label for="being_metric_current">Current Value</label>
-                                <input type="number" id="being_metric_current" name="being_metric_current" step="0.01">
+                                <input type="number" id="being_metric_current" name="being_metric_current" step="0.01" min="0">
                             </div>
                             <div class="input-group">
                                 <label for="being_metric_target">Target Value (End of Quarter)</label>
-                                <input type="number" id="being_metric_target" name="being_metric_target" step="0.01">
+                                <input type="number" id="being_metric_target" name="being_metric_target" step="0.01" min="0">
                             </div>
                         </div>
                     </div>
@@ -1131,11 +1131,11 @@
                         <div class="metric-inputs">
                             <div class="input-group">
                                 <label for="balance_metric_current">Current Value</label>
-                                <input type="number" id="balance_metric_current" name="balance_metric_current" step="0.01">
+                                <input type="number" id="balance_metric_current" name="balance_metric_current" step="0.01" min="0">
                             </div>
                             <div class="input-group">
                                 <label for="balance_metric_target">Target Value (End of Quarter)</label>
-                                <input type="number" id="balance_metric_target" name="balance_metric_target" step="0.01">
+                                <input type="number" id="balance_metric_target" name="balance_metric_target" step="0.01" min="0">
                             </div>
                         </div>
                     </div>
@@ -1180,11 +1180,11 @@
                         <div class="metric-inputs">
                             <div class="input-group">
                                 <label for="business_metric_current">Current Value</label>
-                                <input type="number" id="business_metric_current" name="business_metric_current" step="0.01">
+                                <input type="number" id="business_metric_current" name="business_metric_current" step="0.01" min="0">
                             </div>
                             <div class="input-group">
                                 <label for="business_metric_target">Target Value (End of Quarter)</label>
-                                <input type="number" id="business_metric_target" name="business_metric_target" step="0.01">
+                                <input type="number" id="business_metric_target" name="business_metric_target" step="0.01" min="0">
                             </div>
                         </div>
                     </div>
@@ -1478,31 +1478,55 @@
                 const storageKey = `quarterly_missions_${formData.get('user_email').replace('@', '_')}`;
                 localStorage.setItem(storageKey, JSON.stringify(missionsData));
                 
-                // Submit to n8n webhook
+                console.log('Submitting to webhook:', data);
+                
+                // Submit to n8n webhook with timeout
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+                
                 const response = await fetch('https://n8n-production-3280.up.railway.app/webhook/quarterly-impossible-game', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify(data),
+                    signal: controller.signal,
+                    mode: 'cors'
                 });
                 
+                clearTimeout(timeoutId);
+                
                 if (response.ok) {
-                    alert('Your Quarterly Impossible Game has been submitted successfully! You will receive your strategic analysis via email within 30 minutes.');
+                    const result = await response.text();
+                    console.log('Submission successful:', result);
+                    alert('✅ Your Quarterly Impossible Game has been submitted successfully!\n\nYou will receive your strategic analysis via email within 30 minutes.');
+                    
+                    // Reset form
                     this.reset();
                     currentSection = 1;
                     showSection(1);
+                    
                     // Reset progress steps
                     document.querySelectorAll('.step').forEach((step, index) => {
                         step.classList.remove('completed', 'active');
                         if (index === 0) step.classList.add('active');
                     });
                 } else {
-                    throw new Error('Submission failed');
+                    console.error('Server responded with:', response.status, response.statusText);
+                    throw new Error(`Server error: ${response.status}`);
                 }
             } catch (error) {
-                console.error('Error:', error);
-                alert('There was an error submitting your assessment. Please try again or contact support.');
+                console.error('Submission error:', error);
+                
+                if (error.name === 'AbortError') {
+                    alert('⚠️ The submission timed out. Please check your internet connection and try again.');
+                } else if (error.message.includes('Failed to fetch')) {
+                    alert('⚠️ Could not connect to the server. This might be a CORS issue or the webhook might not be active.\n\nPlease try again or contact support.');
+                } else {
+                    alert(`⚠️ There was an error submitting your assessment:\n${error.message}\n\nPlease try again or contact support.`);
+                }
+            }
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit Assessment';
